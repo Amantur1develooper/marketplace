@@ -1,0 +1,27 @@
+
+<div class="container">
+        <span class="fs-4">To do list</span>
+    <form method="POST">
+        {% csrf_token %}
+    <label>название задачи:</label>
+    <input type="text" name="first_name" value="{{todo.first_name}}">
+    <br>
+    <br>
+    <br>
+    <label>Описание задачи:</label>
+    <input type='text' value="{{todo.last_name}}"
+    name="last_name">
+    <br>
+    <br>
+    <label>Описание задачи:</label>
+    <input type='text' value="{{todo.phone}}"
+    name="phone">
+    <br>
+    <br>
+    <input class="btn btn-warning" type='submit' value="Сохранить">
+    <input class='btn btn-dark' type="submit" value="Назад">
+    </form>
+    <br>
+    <br>
+
+

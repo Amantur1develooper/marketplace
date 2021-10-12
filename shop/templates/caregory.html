@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %} category{% endblock %}
+
+
+{%block content%}
+<div class="container">
+ <div class="row">
+                      {% for p in products %}
+                        <div class="col-6 col-md-6 col-lg-4 mb-3">
+                          <div class="card h-100 border-0">
+                            <div class="card-img-top">
+                            {% if p.image %}
+                              <img src="{{ p.image.url }}" weight="50px" heigth="50px"  class="img-fluid mx-auto d-block" alt="Card image cap">
+                              {% endif %}
+                            </div>
+                        
+                            <div class="card-body text-center">
+                              <h4 class="card-title">
+                              
+                                <a href="{% url 'datail' pk=product.pk %}" class=" font-weight-bold text-dark text-uppercase small">{{product.name}}</a>
+                                
+                              </h4>
+                              <h5 class="card-price small text-warning">
+                                <i>
+                                  <s>${{p.price}}</s> $99</i>
+                              </h5>
+                            </div>
+                            
+                          </div>
+                          
+                        </div>
+                        {% endfor %}
+                        </div>
+</div>
+{% endblock%}
