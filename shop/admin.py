@@ -43,10 +43,10 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name',]
 
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ['first_name', 'email', 'password']
+    list_display = ['first_name', 'email', 'phone','address']
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['customer', 'quantity', 'price', 'address', 'date', 'status']
+    list_display = ['product','customer', 'quantity', 'price', 'address', 'date']
 
 
 class ProductAdmin(admin.ModelAdmin):

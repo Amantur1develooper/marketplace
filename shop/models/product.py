@@ -8,7 +8,9 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     description = models.CharField(max_length=255)
     image = models.ImageField(upload_to='shop/image' , null=True , blank=True)
-
+    
+    def __str__(self):
+        return self.name
     def str(self):
         return self.name
 

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %} Search {% endblock%}
+{% block content %}
+
+{% if search_product_from_input %}
+    
+    <h1> Вы искали {{ search_product_from_input }}</h1>
+    {%for product in searched_products %}
+    {{product.name}}
+    {{product.price}}
+    
+    {% endfor%}
+
+{% else %}
+    Мы не нашли ваш товар?
+    {% endif %}
+{% endblock%}

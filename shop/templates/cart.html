@@ -3,16 +3,15 @@
 {% block title %} {{product_pk.name}} {% endblock %}
 <section class="pt-5 pb-5">
   <div class="container">
-{{cart_session}}
+{% comment %} {{cart_session}} {% endcomment %}
 
 <br>
 <br>
-{{products}}
+{% comment %} {{products}} {% endcomment %}
 <br>
 <hr>
-{% for i in products %}
-{{i.name}}<br>
-{% endfor %}
+{% comment %} {% for i in products %} {% endcomment %}
+{% comment %} {{i.name}}<br> {% endcomment %}
 
 
     <div class="row w-100">
@@ -55,14 +54,14 @@
                             {% comment %} <input type="number" class="form-control form-control-lg text-center" value="1"> {% endcomment %}
                             {{p.count}}
                         </td>
-                        <td class="actions" data-th="">
+                        <td class="actions" data-th="">${{p.sum}}
                             {% comment %} <div class="text-right">
                                 {% comment %} <button class="btn btn-white border-secondary bg-white btn-md mb-2">
                                     <i class="fas fa-sync"></i>
                                 </button> {% endcomment %}
                                 {% comment %} <button class="btn btn-white border-secondary bg-white btn-md mb-2"> {% endcomment %}
                                     <i class="fas fa-trash"></i>
-                                    <li>{{products.sum}}</li>
+                                    {% comment %} <li>{{products.sum}}</li> {% endcomment %}
                                 </button>
                               
                             
@@ -94,16 +93,62 @@
     </div>
     <div class="row mt-4 d-flex align-items-center">
         <div class="col-sm-6 order-md-2 text-right">
-            <a href="catalog.html" class="btn btn-primary mb-4 btn-lg pl-5 pr-5">Checkout</a>
+            {% comment %} <a href="catalog.html" class="btn btn-primary mb-4 btn-lg pl-5 pr-5">Checkout</a> {% endcomment %}
+        <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Для заказа напишите свои контакты</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'order' %}" method="POST">
+        {% csrf_token %}
+        <input class="form-control form-control-sm" type="text" placeholder="input name your" aria-label=".form-control-sm example" name='c_name'>
+        <br>
+        <input class="form-control form-control-sm" type="text" placeholder="input secondname your" aria-label=".form-control-sm example"name='c_lname'>
+        <br>
+        <input class="form-control form-control-sm" type="text" placeholder="input phone numbers" aria-label=".form-control-sm example"name='c_phnumber'>
+        <br>
+        <input class="form-control form-control-sm" type="email" placeholder="email" aria-label=".form-control-sm example"name='c_email'>
+        <br>
+        <input class="form-control form-control-sm" type="text" placeholder="address" aria-label=".form-control-sm example"name='c_address'>
+        <br>
+
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+        </form>
+      </div>
+      {% comment %} <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example"> {% endcomment %}
+      
+    </div>
+  </div>
+</div>
         </div>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{message.extra_tags}}debgerous alert-dismissible fade show" role="alert">
+  <strong>{{message}}</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">Здесь нету покупок</button>
+</div>
+{% endfor %}
+{%endif%}
         <div class="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
             <a href="{% url 'homepage' %}">
-                <i class="fas fa-arrow-left mr-2"></i> Continue Shopping</a>
+                <i class="fas fa-arrow-left mr-2"></i> Продолжить покупки</a>
         </div>
     </div>
 </div>
 </section>
-https://bootstraptor.com/snippets/bootstrap-4-snippet-shopping-cart/
+{% comment %} https://bootstraptor.com/snippets/bootstrap-4-snippet-shopping-cart/ {% endcomment %}
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"><script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"><script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"><script>

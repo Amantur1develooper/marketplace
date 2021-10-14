@@ -9,6 +9,8 @@ from shop.views.cart import remove_from_cart
 from shop.views.signout import signout
 from shop.views.cartAdd import cartAdd
 from shop.views.pr_category import pr_category
+from shop.views.search import search
+from shop.views.order import order
 # from django.views.generic. import TemplateView
 from .views.register import SignUpView
 
@@ -25,7 +27,9 @@ urlpatterns = [
     path('addToCard/<int:pk>', addToCard,name=' addToCard'),
     # path('delete/<int:id>',delete,name='delete'),
     path('remove_from_cart/<int:pk>', remove_from_cart, name='remove_from_cart'),
-    path('category/<int:pk>',pr_category, name='pr_categoty')
+    path('category/<int:pk>',pr_category, name='pr_categoty'),
+    path('SEARCH',search,name='search'),
+    path('order',order,name='order')
     # path('', TemplateView.as_view(template_name='home.html'), name='home'),
     # path('signup/', SignUpView.as_view(), name='signup'),
 
